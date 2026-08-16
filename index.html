@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentorship Agreement - Teresa Steinkopff</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 25mm; }
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 0; }
+    .no-print { display: none !important; }
+    .sig-canvas { display: none !important; }
+    .sig-image { display: block !important; }
+    .clear-sig { display: none !important; }
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 11pt;
+    line-height: 1.75;
+    color: #2D2D2D;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: #FAFAF8;
+  }
+
+  .contract-header {
+    text-align: center;
+    padding: 40px 0 32px;
+    border-bottom: 2px solid #54605C;
+    margin-bottom: 36px;
+  }
+  .contract-header .logo-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #54605C;
+    margin-bottom: 4px;
+  }
+  .contract-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28pt;
+    font-weight: 600;
+    color: #2D2D2D;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .contract-header .subtitle {
+    font-size: 10pt;
+    color: #6B6B6B;
+    letter-spacing: 1px;
+  }
+
+  .parties-box {
+    background: #F5F0EB;
+    border: 1px solid #DECFC7;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .parties-box .party-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .parties-box .party-row:last-child { margin-bottom: 0; }
+  .parties-box .party-label {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #54605C;
+    font-weight: 600;
+    min-width: 120px;
+  }
+  .parties-box .party-value {
+    font-size: 11pt;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .note-box {
+    background: #FDFCFB;
+    border-left: 3px solid #54605C;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-style: italic;
+    color: #4A4A4A;
+    font-size: 10.5pt;
+    line-height: 1.8;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16pt;
+    color: #54605C;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DECFC7;
+  }
+  h2 .section-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #3D4A46;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  ul { padding-left: 20px; margin-bottom: 16px; }
+  li { margin-bottom: 10px; }
+  li strong { color: #2D2D2D; }
+
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 10.5pt;
+  }
+  .payment-table th {
+    background: #54605C;
+    color: white;
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 9pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .payment-table td {
+    border: 1px solid #DECFC7;
+    padding: 10px 16px;
+  }
+  .payment-table tr:nth-child(even) { background: #FDFCFB; }
+  .payment-table .total-row { background: #F5F0EB; font-weight: 600; }
+
+  .highlight-box {
+    background: #F5F0EB;
+    border: 1px solid #DECFC7;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 10.5pt;
+  }
+
+  .sig-section {
+    margin-top: 48px;
+    page-break-inside: avoid;
+  }
+  .sig-block {
+    border: 1px solid #DECFC7;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    background: #FDFCFB;
+  }
+  .sig-block .sig-label {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #54605C;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .sig-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+  .sig-field {
+    flex: 1;
+  }
+  .sig-field label {
+    display: block;
+    font-size: 9pt;
+    color: #999;
+    margin-bottom: 4px;
+  }
+  .sig-line {
+    border-bottom: 1px solid #2D2D2D;
+    min-height: 32px;
+    margin-bottom: 8px;
+  }
+  .sig-pad-wrap { position: relative; }
+  .sig-canvas {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #2D2D2D;
+    cursor: crosshair;
+    background: transparent;
+    touch-action: none;
+    display: block;
+  }
+  .sig-image {
+    display: none;
+    max-height: 80px;
+    border-bottom: 1px solid #2D2D2D;
+  }
+  .clear-sig {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 8pt;
+    color: #999;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .clear-sig:hover { color: #54605C; }
+  .sig-date-auto {
+    border-bottom: 1px solid #2D2D2D;
+    min-height: 32px;
+    padding-top: 4px;
+    margin-bottom: 8px;
+    color: #2D2D2D;
+  }
+  .generate-section {
+    text-align: center;
+    margin: 48px 0 24px;
+    padding: 32px;
+    background: #F5F0EB;
+    border: 1px solid #DECFC7;
+    border-radius: 8px;
+  }
+  .generate-section p {
+    font-size: 10pt;
+    color: #6B6B6B;
+    margin-bottom: 16px;
+  }
+  .btn-generate {
+    background: #54605C;
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  .btn-generate:hover { background: #6B7B75; }
+
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #DECFC7;
+    font-size: 9pt;
+    color: #999;
+    line-height: 1.8;
+  }
+
+  .payment-cta {
+    text-align: center;
+    margin: 24px 0 32px;
+    padding: 24px;
+    background: #F5F0EB;
+    border: 1px solid #DECFC7;
+    border-radius: 8px;
+  }
+  .payment-cta p {
+    font-size: 10pt;
+    color: #4A4A4A;
+    margin-bottom: 16px;
+  }
+  .payment-cta a {
+    display: inline-block;
+    background: #54605C;
+    color: white;
+    text-decoration: none;
+    padding: 14px 40px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  strong { color: #2D2D2D; }
+  .no-break { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<div class="contract-header">
+  <div class="logo-text">Peace of Eden Holistic Health Pty Ltd</div>
+  <h1>Mentorship Agreement</h1>
+  <div class="subtitle">3-Month 1:1 Intensive Mentorship Program</div>
+</div>
+
+<div class="parties-box">
+  <div class="party-row">
+    <span class="party-label">The Facilitator</span>
+    <span class="party-value">Kelly Wotherspoon-Rawle<br><span style="font-size:9pt;color:#6B6B6B;">Peace of Eden Holistic Health Pty Ltd | ABN: 31 642 195 099</span></span>
+  </div>
+  <div class="party-row">
+    <span class="party-label">The Student</span>
+    <span class="party-value">Teresa Steinkopff<br><span style="font-size:9pt;color:#6B6B6B;">tmsteink@gmail.com</span></span>
+  </div>
+  <div class="party-row">
+    <span class="party-label">Date</span>
+    <span class="party-value">17 August 2026</span>
+  </div>
+</div>
+
+<div class="note-box">
+  This agreement exists to give both parties clarity and protection. Clear containers make for better work. When both the Facilitator and the Student know what is being committed to, both can show up fully. That is the whole point.
+</div>
+
+<!-- SECTION 1 -->
+<h2><span class="section-num">SECTION 1</span>The Program</h2>
+
+<p><strong>Program Name:</strong> 3-Month 1:1 Intensive Mentorship with Kelly Wotherspoon</p>
+<p><strong>Duration:</strong> 3 calendar months (12 weeks)</p>
+<p><strong>Description:</strong> A deeply personal mentorship covering health, energy, spiritual path, and business - all held in one place. This is not a course or a group program. It is a direct container between the Facilitator and the Student, built entirely around the Student's goals and circumstances.</p>
+
+<h3>Agreed Outcomes</h3>
+<p>Based on the scoping conversation held on 17 August 2026, the following outcomes have been agreed as the focus of this mentorship:</p>
+<p>Based on the discovery conversation held on 17 August 2026, the following outcomes have been agreed as the focus of this mentorship:</p>
+<ul>
+  <li><strong>Trust in the messages you receive</strong> - The core of this work. Moving from wondering whether what comes through is real to knowing it in your body, so you can act on it without talking yourself out of it first.</li>
+  <li><strong>Understanding what the messages mean</strong> - Learning to interpret what arrives and to know what action it is asking of you, rather than receiving something clear and then having no idea what to do with it.</li>
+  <li><strong>Reconciling the parts of yourself</strong> - Bringing the religious upbringing, the deconstruction of it, and your own intuitive knowing into one whole practice, rather than parts that sit at odds with each other.</li>
+  <li><strong>A physical baseline that supports the spiritual work</strong> - Mind, body and spirit addressed together. Includes naturopathic education on the candida and autoimmune connection relevant to your lupus diagnosis, as information to discuss with your own healthcare providers.</li>
+  <li><strong>A non-traditional way to support your family</strong> - Building your own offering from your own gifts, so the income does not depend on returning to work that no longer serves you.</li>
+  <li><strong>Confidence and a plan by the end of the twelve weeks</strong> - Walking out the other side with a clear direction, your own daily practice, and the ability to run it without me.</li>
+</ul>
+
+<!-- SECTION 2 -->
+<h2><span class="section-num">SECTION 2</span>What's Included</h2>
+
+<ul>
+  <li><strong>60-minute onboarding call</strong> - Separate from your weekly sessions and not counted against them. Your astrology chart and human design chart prepared and read, a card pull, and the pointed questions that map where you are and where you want to be.</li>
+  <li><strong>Weekly 1-hour 1:1 sessions for 12 weeks</strong> - Dedicated time every week for teaching, coaching, accountability, and working through whatever is live for you that week.</li>
+  <li><strong>Daily voice-note access</strong> - Access to the Facilitator between sessions by voice note for questions, moments of doubt, and guidance when something lands and you need it checked.</li>
+  <li><strong>Aurora, the Facilitator's spiritual AI</strong> - Personalised to your astrology, human design and gifts. Built to lead you back to your own knowing rather than to create dependence on any outside authority.</li>
+  <li><strong>The Facilitator's full toolkit</strong> - Every tool, practice and protocol the Facilitator uses, taught to you so they remain yours after the program ends.</li>
+  <li><strong>Website and digital assets</strong> - A website and the supporting digital assets built for your offering, so you have somewhere real to send people.</li>
+  <li><strong>Business strategy</strong> - Defining who you are in service to, what you are offering them, and the journey you walk them through, so the business is built on your gifts rather than on someone else's template.</li>
+  <li><strong>Accountability and support through the hard parts</strong> - Being seen and supported when life happens mid-container, including the guidance to keep moving when you cannot see your own way through.</li>
+</ul>
+
+<!-- SECTION 3 -->
+<h2><span class="section-num">SECTION 3</span>Investment and Payment</h2>
+
+<table class="payment-table">
+  <thead>
+    <tr><th>Item</th><th>Amount (USD)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Mentorship Fee</td><td>$3,500.00</td></tr>
+    <tr><td>GST</td><td>Nil - export of services</td></tr>
+    <tr class="total-row"><td><strong>Total Investment</strong></td><td><strong>$3,500.00</strong></td></tr>
+  </tbody>
+</table>
+
+<p>The total investment is payable as follows:</p>
+<ul>
+  <li><strong>Deposit - USD $500.00</strong> - payable on signing this agreement. The onboarding call is scheduled once the deposit is received.</li>
+  <li><strong>Instalment 1 - USD $1,000.00</strong> - payable one calendar month after the deposit.</li>
+  <li><strong>Instalment 2 - USD $1,000.00</strong> - payable two calendar months after the deposit.</li>
+  <li><strong>Instalment 3 - USD $1,000.00</strong> - payable three calendar months after the deposit.</li>
+</ul>
+<p>All amounts are in United States dollars. No GST is applied, as this is a supply of services to a non-resident and is treated as an export of services under Australian GST law.</p>
+
+<div class="highlight-box">
+  <strong>All payments are non-refundable.</strong> This applies under all circumstances, without exception. By signing this agreement, the Student acknowledges and accepts the non-refundable nature of the investment.
+</div>
+
+<div class="payment-cta">
+  <p>To secure your place and begin onboarding, pay your deposit below:</p>
+  <a href="https://buy.stripe.com/8x2dR98dueb538WaFDbQY1k">Pay Deposit - USD $500.00</a>
+  <p style="margin-top:12px;font-size:9pt;color:#999;">Secure payment processed by Stripe. You will receive a receipt via email. The remaining three instalments will be invoiced separately.</p>
+</div>
+
+<!-- SECTION 4 -->
+<h2><span class="section-num">SECTION 4</span>Commencement and Duration</h2>
+
+<p>The 3-month mentorship period begins on the date of the <strong>first scheduled 60-minute session</strong>, not the date of signing or payment. This allows time for onboarding and system setup before the mentorship clock starts.</p>
+
+<p>If a formal start date needs to be agreed (for example, if there is a brief delay between signing and the first session), this will be noted in writing between both parties.</p>
+
+<!-- SECTION 5 -->
+<h2><span class="section-num">SECTION 5</span>Confidentiality</h2>
+
+<p>What happens in this container stays in this container. This applies equally to both parties.</p>
+
+<h3>The Facilitator agrees to:</h3>
+<ul>
+  <li>Keep all personal, business, and health information shared by the Student completely confidential</li>
+  <li>Not reference, share, or discuss the Student's situation with third parties without explicit written permission</li>
+  <li>Use the Student's experience as a case study or testimonial only with written consent</li>
+</ul>
+
+<h3>The Student agrees to:</h3>
+<ul>
+  <li>Keep the content of sessions, the Facilitator's methods, frameworks, teachings, and materials confidential</li>
+  <li>Not share, reproduce, or distribute resources, templates, or proprietary content provided within this mentorship</li>
+  <li>Treat any behind-the-scenes business information shared by the Facilitator as confidential</li>
+</ul>
+
+<p>This confidentiality agreement holds for the duration of the mentorship and continues after it ends.</p>
+
+<!-- SECTION 6 -->
+<h2><span class="section-num">SECTION 6</span>Commitment and Cancellation</h2>
+
+<p>This is a 3-month commitment, not a subscription that can be cancelled at any time.</p>
+
+<div class="highlight-box">
+  <strong>There are no refunds under any circumstances.</strong> If the Student chooses to discontinue the mentorship before the 3 months are complete, no refund will be issued. This is a reflection of the fact that the Facilitator holds space for a finite number of people, and when a commitment is made to the Student, other potential clients are turned away.
+</div>
+
+<h3>Termination by the Facilitator</h3>
+<p>The Facilitator reserves the right to end this mentorship if the container is not being respected. This includes but is not limited to: abusive communication, consistent non-engagement, or behaviour that compromises the safety or integrity of the space. <strong>In the event of termination for misconduct, no refund will be issued.</strong></p>
+
+<!-- SECTION 7 -->
+<h2><span class="section-num">SECTION 7</span>Intellectual Property</h2>
+
+<h3>AI Artifacts and Systems</h3>
+<p>Any AI infrastructure, command centres, task tools, landing pages, funnels, automations, templates, or digital systems created by the Facilitator during the course of this mentorship (the "Artifacts") are built in reference to the Student's business position and goals. However:</p>
+
+<ul>
+  <li><strong>All intellectual property in the Artifacts remains the property of the Facilitator</strong> (Peace of Eden Holistic Health Pty Ltd / AI with Soul)</li>
+  <li>The Student is granted a <strong>non-exclusive, non-transferable licence</strong> to use the Artifacts for the Student's own business purposes for the duration of the mentorship and beyond</li>
+  <li>The Student may not resell, redistribute, sublicense, or commercially exploit the underlying architecture, code, or systems without the Facilitator's written consent</li>
+  <li>The Facilitator retains the right to use similar architectures, patterns, and approaches in other engagements</li>
+</ul>
+
+<h3>The Facilitator's Methods</h3>
+<p>All frameworks, teaching materials, methodologies, and proprietary content shared within the mentorship remain the intellectual property of the Facilitator. The Student may apply what is learned but may not reproduce, teach, or distribute the Facilitator's materials.</p>
+
+<!-- SECTION 8 -->
+<h2><span class="section-num">SECTION 8</span>Scope and Limitations</h2>
+
+<p><strong>This is mentorship, not therapy.</strong> The Facilitator is a qualified naturopath and brings that lens to the work. However, this mentorship is not a clinical naturopathic treatment program and does not replace medical care. The Student is encouraged to continue working with appropriate healthcare providers alongside this program.</p>
+
+<p><strong>This is mentorship and coaching, not psychological therapy or counselling.</strong> The Facilitator will hold space, challenge, and support the Student deeply, but is not a licensed therapist. If the Student requires that level of support, the Facilitator will say so and assist in finding appropriate help.</p>
+
+<p><strong>Results:</strong> Outcomes depend on the Student's effort, implementation, openness, and consistency. The Facilitator cannot guarantee specific business results, health outcomes, or life changes. What the Facilitator can guarantee is presence, honesty, and genuine investment in the Student's growth.</p>
+
+<!-- SECTION 9 -->
+<h2><span class="section-num">SECTION 9</span>Scope Boundaries</h2>
+
+<p>This agreement covers the program as described in Sections 1 and 2 only. <strong>The Facilitator is not contracted to deliver any builds, systems, or services beyond the scope listed in this agreement.</strong> Any additional projects, builds, integrations, or engagements will be scoped, priced, and agreed upon under a separate agreement.</p>
+
+<p>Conversations during the engagement may naturally surface opportunities for additional work. The Facilitator is happy to discuss further builds if the Student is interested, but nothing additional is assumed or implied by this agreement. A separate conversation and a separate contract will follow for any work outside this scope.</p>
+
+<h3>Continuation and Re-engagement</h3>
+<p>At the conclusion of the 3-month period, both parties may choose to enter into a new agreement for continued services. This may include expanded scope, additional system builds, ongoing strategy calls, or any other services agreed at that time. Continuation is entirely optional for both parties and will be covered under new terms.</p>
+
+<!-- SECTION 10 -->
+<h2><span class="section-num">SECTION 10</span>Dispute Resolution</h2>
+
+<p>When you lead with heart and compassion, disputes are easy to settle. Both parties enter this agreement with the shared intention that any concern will be resolved in a way that leaves everyone satisfied with the deliverables under these terms. If the Student is dissatisfied with any aspect of the program at any stage, the following process applies:</p>
+
+<ul>
+  <li><strong>Step 1: Direct conversation</strong> - The Student raises the concern with the Facilitator in writing (email or Telegram). The Facilitator will respond within 5 business days with a proposed resolution.</li>
+  <li><strong>Step 2: Resolution meeting</strong> - If the concern is not resolved through written communication, both parties will schedule a video call within 10 business days to discuss and agree on a path forward.</li>
+  <li><strong>Step 3: Independent mediation</strong> - If the matter remains unresolved after direct discussion, both parties agree to engage an independent mediator before pursuing any legal action. Mediation costs will be shared equally. The mediating jurisdiction shall be Queensland, Australia.</li>
+</ul>
+
+<p>Neither party will pursue legal proceedings without first completing Steps 1 and 2 above. This clause does not prevent either party from seeking urgent injunctive relief where necessary.</p>
+
+<!-- SIGNATURES -->
+<div class="sig-section">
+<h2><span class="section-num">SECTION 11</span>Agreement and Signatures</h2>
+
+<p>By signing below, both parties confirm that they have read, understood, and agree to all terms outlined in this agreement.</p>
+
+<div class="sig-block">
+  <div class="sig-label">The Facilitator</div>
+  <div class="sig-row">
+    <div class="sig-field">
+      <label>Signature</label>
+      <div class="sig-pad-wrap">
+        <canvas class="sig-canvas" id="facilitatorSig"></canvas>
+        <img class="sig-image" id="facilitatorSigImg" alt="Facilitator signature">
+        <button class="clear-sig no-print" onclick="clearSignature('facilitatorSig')">clear</button>
+      </div>
+    </div>
+    <div class="sig-field">
+      <label>Date</label>
+      <div class="sig-date-auto" id="facilitatorDate"></div>
+    </div>
+  </div>
+  <div class="sig-row">
+    <div class="sig-field">
+      <label>Full Name</label>
+      <div class="sig-line" style="padding-top:4px;">Kelly Wotherspoon-Rawle</div>
+    </div>
+  </div>
+  <p style="font-size:9pt;color:#999;margin-top:8px;">Peace of Eden Holistic Health Pty Ltd | ABN: 31 642 195 099</p>
+</div>
+
+<div class="sig-block">
+  <div class="sig-label">The Student</div>
+  <div class="sig-row">
+    <div class="sig-field">
+      <label>Signature</label>
+      <div class="sig-pad-wrap">
+        <canvas class="sig-canvas" id="studentSig"></canvas>
+        <img class="sig-image" id="studentSigImg" alt="Student signature">
+        <button class="clear-sig no-print" onclick="clearSignature('studentSig')">clear</button>
+      </div>
+    </div>
+    <div class="sig-field">
+      <label>Date</label>
+      <div class="sig-date-auto" id="studentDate"></div>
+    </div>
+  </div>
+  <div class="sig-row">
+    <div class="sig-field">
+      <label>Full Name</label>
+      <div class="sig-line" style="padding-top:4px;">Teresa Steinkopff</div>
+    </div>
+  </div>
+  <p style="font-size:9pt;color:#999;margin-top:8px;">tmsteink@gmail.com</p>
+</div>
+</div>
+
+<!-- Submit button -->
+<div class="generate-section no-print">
+  <p>Once you have signed above, click below to submit your signed contract. Your signature will be saved securely and a PDF will be generated for your records.</p>
+  <button class="btn-generate" onclick="submitContract()">Submit Signed Contract</button>
+</div>
+
+<div class="footer">
+  Peace of Eden Holistic Health Pty Ltd | ABN: 31 642 195 099<br>
+  hello@aiwithsoul.com.au | www.aiwithsoul.com.au<br><br>
+  This document was prepared for the 3-Month 1:1 Intensive Mentorship Program.<br>
+  Version 1.0 - August 2026
+</div>
+
+<script>
+// ── Supabase Config ──
+const SUPABASE_URL = 'https://jiquevvzrdavgqonvvug.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4';
+const CONTRACT_ID = '41f307ef-326b-4038-9c03-9e922ef1fa61';
+
+// ── Signature Pad ──
+const pads = {};
+
+function initSignaturePad(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let hasSigned = false;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    ctx.strokeStyle = '#2D2D2D';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+  }
+
+  function start(e) {
+    e.preventDefault();
+    drawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+  }
+
+  function move(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const pos = getPos(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    if (!hasSigned) {
+      hasSigned = true;
+      const dateEl = document.getElementById(canvasId.replace('Sig', 'Date'));
+      if (dateEl && !dateEl.textContent) {
+        const now = new Date();
+        const day = now.getDate();
+        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        dateEl.textContent = day + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+      }
+    }
+  }
+
+  function end() { drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  canvas.addEventListener('touchstart', start, { passive: false });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  canvas.addEventListener('touchend', end);
+
+  resize();
+  window.addEventListener('resize', () => { if (!hasSigned) resize(); });
+
+  pads[canvasId] = {
+    canvas, ctx, hasSigned: () => hasSigned,
+    reset: () => {
+      hasSigned = false;
+      resize();
+      const dateEl = document.getElementById(canvasId.replace('Sig', 'Date'));
+      if (dateEl) dateEl.textContent = '';
+    },
+    toDataURL: () => canvas.toDataURL('image/png')
+  };
+}
+
+function clearSignature(canvasId) {
+  if (pads[canvasId]) pads[canvasId].reset();
+}
+
+// ── Submit Contract ──
+async function submitContract() {
+  if (!pads['studentSig'] || !pads['studentSig'].hasSigned()) {
+    alert('Student signature is required.');
+    return;
+  }
+
+  const btn = document.querySelector('.btn-generate');
+  btn.textContent = 'Saving signature...';
+  btn.disabled = true;
+
+  try {
+    const studentSigData = pads['studentSig'].toDataURL();
+    const facilitatorSigData = pads['facilitatorSig']?.hasSigned() ? pads['facilitatorSig'].toDataURL() : null;
+
+    const response = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({
+        status: 'signed',
+        signed_at: new Date().toISOString(),
+        participant_signature_data: studentSigData,
+        facilitator_signature_data: facilitatorSigData,
+        form_data: {}
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.text();
+      throw new Error('Save failed: ' + err);
+    }
+
+    // Convert signatures to static images for PDF
+    ['studentSig', 'facilitatorSig'].forEach(id => {
+      if (pads[id] && pads[id].hasSigned()) {
+        const img = document.getElementById(id + 'Img');
+        img.src = pads[id].toDataURL();
+        img.style.display = 'block';
+      }
+    });
+
+    btn.textContent = 'Saved! Generating PDF...';
+    setTimeout(() => { window.print(); btn.textContent = 'Contract signed and saved'; }, 150);
+
+  } catch (err) {
+    console.error(err);
+    alert('Could not save signature to server. Please check your internet connection and try again.\n\nError: ' + err.message);
+    btn.textContent = 'Submit Signed Contract';
+    btn.disabled = false;
+  }
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
+  initSignaturePad('facilitatorSig');
+  initSignaturePad('studentSig');
+});
+</script>
+
+</body>
+</html>
