@@ -508,6 +508,10 @@
     </div>
   </div>
   <p style="font-size:9pt;color:#999;margin-top:8px;">Peace of Eden Holistic Health Pty Ltd | ABN: 31 642 195 099</p>
+  <div class="facilitator-save-wrap no-print" style="margin-top:14px;">
+    <button class="btn-facilitator-save" onclick="saveFacilitatorSignature()" style="background:none;border:1px solid #54605C;color:#54605C;padding:8px 20px;border-radius:5px;font-family:'Inter',sans-serif;font-size:9.5pt;font-weight:600;cursor:pointer;">Save Facilitator Signature</button>
+    <p class="facilitator-save-note" style="font-size:8.5pt;color:#999;margin-top:8px;">For the Facilitator only. Sign above and save, then send this link to the Student.</p>
+  </div>
 </div>
 
 <div class="sig-block">
@@ -569,6 +573,7 @@ function initSignaturePad(canvasId) {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(dpr, dpr);
     ctx.strokeStyle = '#2D2D2D';
     ctx.lineWidth = 2;
@@ -637,10 +642,109 @@ function clearSignature(canvasId) {
   if (pads[canvasId]) pads[canvasId].reset();
 }
 
-// ── Submit Contract ──
+// ── Shared save helper ──
+async function patchContract(payload) {
+  const response = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) throw new Error('Save failed: ' + (await response.text()));
+  return response.json();
+}
+
+function lockSignature(id, dateText) {
+  const img = document.getElementById(id + 'Img');
+  const canvas = document.getElementById(id);
+  const clearBtn = canvas.parentElement.querySelector('.clear-sig');
+  if (pads[id] && pads[id].hasSigned()) img.src = pads[id].toDataURL();
+  img.style.display = 'block';
+  canvas.style.display = 'none';
+  if (clearBtn) clearBtn.style.display = 'none';
+  const dateEl = document.getElementById(id.replace('Sig', 'Date'));
+  if (dateEl && dateText) dateEl.textContent = dateText;
+}
+
+function prettyDate(d) {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+// ── Facilitator countersign (saves without completing the contract) ──
+async function saveFacilitatorSignature() {
+  if (!pads['facilitatorSig'] || !pads['facilitatorSig'].hasSigned()) {
+    alert('Please sign in the Facilitator box first.');
+    return;
+  }
+  const btn = document.querySelector('.btn-facilitator-save');
+  const original = btn.textContent;
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+  try {
+    const now = new Date();
+    const existing = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID + '&select=form_data', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
+    }).then(r => r.json()).catch(() => [{}]);
+    const formData = (existing[0] && existing[0].form_data) || {};
+    formData.facilitator_signed_at = now.toISOString();
+    formData.facilitator_signed_display = prettyDate(now);
+
+    await patchContract({
+      facilitator_signature_data: pads['facilitatorSig'].toDataURL(),
+      form_data: formData
+    });
+
+    lockSignature('facilitatorSig', prettyDate(now));
+    btn.textContent = 'Your signature is saved';
+    const note = document.querySelector('.facilitator-save-note');
+    if (note) note.textContent = 'Saved. Send this link to the Student to countersign.';
+  } catch (err) {
+    console.error(err);
+    alert('Could not save your signature.\n\nError: ' + err.message);
+    btn.textContent = original;
+    btn.disabled = false;
+  }
+}
+
+// ── Load any signature already saved on this contract ──
+async function loadExistingSignatures() {
+  try {
+    const rows = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID + '&select=facilitator_signature_data,participant_signature_data,form_data,status,signed_at', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
+    }).then(r => r.json());
+    const row = rows && rows[0];
+    if (!row) return;
+
+    if (row.facilitator_signature_data) {
+      const img = document.getElementById('facilitatorSigImg');
+      img.src = row.facilitator_signature_data;
+      const disp = (row.form_data && row.form_data.facilitator_signed_display) || '';
+      lockSignature('facilitatorSig', disp);
+      const wrap = document.querySelector('.facilitator-save-wrap');
+      if (wrap) wrap.style.display = 'none';
+    }
+    if (row.participant_signature_data) {
+      const img = document.getElementById('studentSigImg');
+      img.src = row.participant_signature_data;
+      const disp = row.signed_at ? prettyDate(new Date(row.signed_at)) : '';
+      lockSignature('studentSig', disp);
+      const btn = document.querySelector('.btn-generate');
+      if (btn) { btn.textContent = 'Contract signed and saved'; btn.disabled = true; }
+    }
+  } catch (err) {
+    console.error('Could not load existing signatures', err);
+  }
+}
+
+// ── Submit Contract (Student) ──
 async function submitContract() {
   if (!pads['studentSig'] || !pads['studentSig'].hasSigned()) {
-    alert('Student signature is required.');
+    alert('Please sign in the Student box above before submitting.');
     return;
   }
 
@@ -649,30 +753,25 @@ async function submitContract() {
   btn.disabled = true;
 
   try {
-    const studentSigData = pads['studentSig'].toDataURL();
-    const facilitatorSigData = pads['facilitatorSig']?.hasSigned() ? pads['facilitatorSig'].toDataURL() : null;
+    const existing = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID + '&select=form_data', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY }
+    }).then(r => r.json()).catch(() => [{}]);
 
-    const response = await fetch(SUPABASE_URL + '/rest/v1/contracts?id=eq.' + CONTRACT_ID, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify({
-        status: 'signed',
-        signed_at: new Date().toISOString(),
-        participant_signature_data: studentSigData,
-        facilitator_signature_data: facilitatorSigData,
-        form_data: {}
-      })
-    });
+    const payload = {
+      status: 'signed',
+      signed_at: new Date().toISOString(),
+      participant_signature_data: pads['studentSig'].toDataURL(),
+      form_data: (existing[0] && existing[0].form_data) || {}
+    };
 
-    if (!response.ok) {
-      const err = await response.text();
-      throw new Error('Save failed: ' + err);
+    // Only write the facilitator signature if it was drawn in THIS session.
+    // Otherwise leave whatever is already stored, so a countersignature saved
+    // earlier is never overwritten with null.
+    if (pads['facilitatorSig'] && pads['facilitatorSig'].hasSigned()) {
+      payload.facilitator_signature_data = pads['facilitatorSig'].toDataURL();
     }
+
+    await patchContract(payload);
 
     // Convert signatures to static images for PDF
     ['studentSig', 'facilitatorSig'].forEach(id => {
@@ -698,6 +797,7 @@ async function submitContract() {
 document.addEventListener('DOMContentLoaded', () => {
   initSignaturePad('facilitatorSig');
   initSignaturePad('studentSig');
+  loadExistingSignatures();
 });
 </script>
 
